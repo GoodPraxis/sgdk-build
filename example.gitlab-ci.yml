@@ -1,0 +1,15 @@
+stages:
+  - build
+
+build:
+  stage: build
+  image: maciekbaron/sgdk:latest
+  script:
+    - make -f $GENDEV/sgdk/mkfiles/makefile.gen clean all
+  artifacts:
+    paths:
+      - out/
+  only:
+    refs:
+      - master
+      - merge_requests
